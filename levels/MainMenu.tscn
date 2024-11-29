@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk7rgntvy4x85"]
+
+[ext_resource type="PackedScene" uid="uid://bjrwqeillfn5o" path="res://components/ui/buttons.tscn" id="1_w8gyd"]
+[ext_resource type="Script" path="res://components/ui/exitButton.gd" id="2_0i002"]
+[ext_resource type="AudioStream" uid="uid://df2tynnohddgh" path="res://assets/ui/Audiomachine - We Will Get Through This.wav" id="2_8joqb"]
+[ext_resource type="Script" path="res://components/ui/buttons.gd" id="2_rqnxd"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = 111.0
+offset_right = 87.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 538.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "4th Sol"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -605.0
+offset_top = -528.0
+offset_right = -265.0
+offset_bottom = -277.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="StartButton" parent="VBoxContainer" instance=ExtResource("1_w8gyd")]
+layout_mode = 2
+text = "New Game"
+script = ExtResource("2_rqnxd")
+
+[node name="Buttons2" parent="VBoxContainer" instance=ExtResource("1_w8gyd")]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" parent="VBoxContainer" instance=ExtResource("1_w8gyd")]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("2_0i002")
+
+[node name="Audiomachine-WeWillGetThroughThis" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(402, 391)
+stream = ExtResource("2_8joqb")
+volume_db = 24.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_pressed"]
